@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css"/>
+	<style type="text/css">
+		.headbar { text-align:center; height:50px; }
+		.no-decoration { text-decoration:none; color:#000 }
+		#alarmSetting_deleteAnchor { color:#F08080; }
+	</style>
+	<!-- js -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
+	<script type="text/javascript" src="../js/alarmMethods.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+</head>
+
+<body>
+
+	<div data-role="page" id="start" class="container">
+		<div class="ui-grid-b headbar">
+			<div class="ui-block-a"><a id="start_dataViewAnchor" class="ui-btn-inline">Data View</a></div>
+			<div class="ui-block-b"><div id="start_timeDiv" class="ui-bar"></div></div>
+			<div class="ui-block-c">
+				<a id="start_createIdAnchor" class="ui-btn ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline" href="#alarmSetting"></a>
+			</div>
+		</div>
+		<ul id="start_alarmList" data-role="listview">
+		</ul>
+	</div>	
+
+	<div data-role="page" id="alarmSetting" class="container">
+		<div class="ui-grid-b headbar">
+			<div class="ui-block-a">
+				<a id="start_createIdAnchor" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-inline" href="#start"></a>
+			</div>
+			<div class="ui-block-b">Set alarm time</div>
+			<div class="ui-block-c">
+				<a id="alarmSetting_saveAnchor" href="#start">Save</a>
+			</div>
+		</div>
+		<!-- note : flipbox's data-options dict has to be single-quoted, not double-quote -->
+		<div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-d ">
+			<input id="alarmSetting_timeFlipbox" type="date" data-role="datebox" data-options='{"mode":"timeflipbox"}' class="ui-input-text ui-body-d ui-corner-all" readonly="readonly"/>
+		</div>
+		
+		<ul data-role="listview">
+			<li class="ui-field-contain"><input id="alarmSetting_titleInput" type="text" value="Title"></input></li>
+			<li>
+				<a href="app://sounds">Sound
+					<span id="alarmSetting_soundText" class="ui-li-count"></span>
+				</a>
+			</li>
+			<li>
+				<a href="#repeatSetting">Repeat
+					<span id="alarmSetting_repeatText" class="ui-li-count"></span>
+				</a>
+			</li>
+			<li class="ui-field-contain">
+				<label for="alarmSetting_snoozeFlip">Snooze</label>
+				<select id="alarmSetting_snoozeFlip" data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</li>
+			<li class="ui-field-contain">
+				<label for="alarmSetting_bestSleepFlip">Best Sleep</label>
+				<select id="alarmSetting_bestSleepFlip" data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</li>
+			<li data-icon="false">
+				<a id="alarmSetting_deleteAnchor" href="#start" >Delete</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<div data-role="page" id="repeatSetting" class="container">
+		<div class="ui-grid-b headbar">
+			<div class="ui-block-a">
+				<a id="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-inline" href="#alarmSetting"></a>
+			</div>
+			<div class="ui-block-b">Repeat Setting</div>
+			<div class="ui-block-c"></div>
+		</div>
+		<ul id="repeatSettingList_weekList" data-role="listview" data-icon="false">
+			<li><a id="nev" href="#alarmSetting">Never</a></li>
+			<li><a id="mon" href="#alarmSetting">Every Monday</a></li>
+			<li><a id="tue" href="#alarmSetting">Every Tuesday</a></li>
+			<li><a id="wed" href="#alarmSetting">Every Wednesday</a></li>
+			<li><a id="thu" href="#alarmSetting">Every Thursday</a></li>
+			<li><a id="fri" href="#alarmSetting">Every Friday</a></li>
+			<li><a id="sat" href="#alarmSetting">Every Saturday</a></li>
+			<li><a id="sun" href="#alarmSetting">Every Sunday</a></li>
+		</ul>
+	</div>
+
+
+</body>
+</html>
